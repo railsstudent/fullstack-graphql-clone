@@ -22,6 +22,16 @@ const createPetModel = db => {
         .write()
 
       return newPet
+    },
+
+    delete(pet) {      
+      const matched = db.get('pet').filter(pet).value()
+      if (matched) {
+        db.get('pet')
+          .remove(pet)
+          .write()
+      }
+      return { id: pet.id }
     }
   }
 }
