@@ -9,7 +9,6 @@ const server = new ApolloServer({
   context() {
     return { models, db }
   } 
-
 })
 
 server.listen().then(({ url }) => {
