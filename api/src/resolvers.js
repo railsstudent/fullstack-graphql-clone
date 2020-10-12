@@ -21,6 +21,9 @@ module.exports = {
     },
     deletePet(_, { input}, ctx) {
       return ctx.models.Pet.delete(input)
+    },
+    updatePet(_, { input }, ctx) {
+      return ctx.models.Pet.update(input)
     }    
   },
   // Pet: {

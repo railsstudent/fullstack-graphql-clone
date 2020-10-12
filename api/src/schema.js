@@ -17,9 +17,14 @@ const typeDefs = gql`
     img: String!
   }
 
+  enum PetType { 
+    DOG
+    CAT
+  }
+
   input PetInput {
     name: String,
-    type: String,
+    type: PetType,
   }
 
   input PetIdInput {
@@ -28,11 +33,17 @@ const typeDefs = gql`
 
   input NewPetInput {
     name: String!,
-    type: String!,
+    type: PetType!,
   }
 
   input DeletePetInput {
     id: ID!
+  }
+
+  input UpdatePetInput {
+    id: ID!,
+    name: String
+    type: PetType
   }
 
   type Query {
@@ -44,6 +55,7 @@ const typeDefs = gql`
   type Mutation {
     newPet(input: NewPetInput): Pet!
     deletePet(input: DeletePetInput): Pet!
+    updatePet(input: UpdatePetInput): Pet!
   }
 `;
 

@@ -32,6 +32,16 @@ const createPetModel = db => {
           .write()
       }
       return { id: pet.id }
+    },
+
+    update(pet) {
+      const { id, ...rest } = pet
+      const updatedPet = db.get('pet')
+        .find({ id })
+        .assign(rest)
+        .value()
+
+      return updatedPet
     }
   }
 }
